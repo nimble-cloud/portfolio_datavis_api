@@ -1,0 +1,14 @@
+services:
+  dev_datavis_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../../:/workspaces:cached
+    command: sleep infinity
+    networks:
+      - dev_network
+
+networks:
+  dev_network:
+    external: true

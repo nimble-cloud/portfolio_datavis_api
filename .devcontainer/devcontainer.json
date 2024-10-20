@@ -1,0 +1,6 @@
+{
+  "name": "Data Vis API portfolio",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev_datavis_api",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
