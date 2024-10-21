@@ -45,23 +45,3 @@ func main() {
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
-
-/*
-Functions for visuals are made
-company_rev_state()
-company_rev() (may not be needed anymore)
-avg_order_size()
-new_customers()
-top_customer()
-
-Jake — Today at 9:57 AM
-The below will need to be consumable from the table Company.public.reports table
-Functions for reports:
-proj_rev_by_tenure
-proj_rev_by_tenure2
-proj_top_10_percent
-proj_rev_breakdown
-proj_top_customers
-proj_top_customers_new
-customer_revenue
-*/
