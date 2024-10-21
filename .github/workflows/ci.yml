@@ -1,0 +1,32 @@
+name: Portfolio Data Vis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build Docker image
+        run: |
+          echo "registry -> ${{ secrets.REGISTRY }}"
+          DOCKER_BUILDKIT=1 docker build -t ${{ secrets.REGISTRY }}/porfolio_datavis_api:latest .
+
+      - name: Push Docker image to local registry
+        run: |
+          docker push ${{ secrets.REGISTRY }}/porfolio_datavis_api:latest
+
+      - name: Restart docker-compose
+        run: |
+          docker compose -f ~/portfolio/datavis/docker-compose.yml portfolio_datavis_api down 
+          docker compose -f ~/portfolio/datavis/docker-compose.yml up portfolio_datavis_api -d
